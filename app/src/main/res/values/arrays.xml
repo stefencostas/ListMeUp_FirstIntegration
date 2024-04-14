@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="categories">
+        <item>Food and Beverages</item>
+        <item>Household Items</item>
+        <item>Toiletries</item>
+        <item>Health and Wellness</item>
+        <item>Clothing and Accessories</item>
+        <item>Office and School Supplies</item>
+        <item>Others</item>
+    </array>
+</resources>
