@@ -1,5 +1,7 @@
 package com.costas.listmeup
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -10,9 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.costas.listmeup.ProfileDetailsAdapter
-import com.costas.listmeup.databinding.ActivityMainBinding
-import com.costas.listmeup.ProfileDetails
+import com.costas.listmeup.adapters.ProfileDetailsAdapter
+import com.costas.listmeup.models.ProfileDetails
 import com.costas.listmeup.databinding.ActivityDashboardBinding
 
 class DashboardActivity : AppCompatActivity() {
@@ -35,7 +36,7 @@ class DashboardActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         saveItemListToSharedPreferences()
-        Log.d("DashboardActivity", "onDestroy called")
+        Log.d("MainActivity", "onDestroy called")
     }
 
     private fun setupRecyclerView() {
@@ -63,10 +64,12 @@ class DashboardActivity : AppCompatActivity() {
             saveItemListToSharedPreferences()
             showToast("Changes saved!")
         }
+        binding.summaryButton.setOnClickListener { navigateToSummaryActivity() }
 
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun retrieveProfileDetails() {
         val sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE)
         val itemList = ProfileDetails.getListFromSharedPreferences(sharedPreferences)
@@ -128,7 +131,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun showUpdateDialog(position: Int) {
-        var currentProfileDetails = profileDetailsList[position]
+        val currentProfileDetails = profileDetailsList[position]
 
         val dialogBuilder = AlertDialog.Builder(this)
         val inflater = layoutInflater
@@ -177,12 +180,17 @@ class DashboardActivity : AppCompatActivity() {
         alertDialog.show()
     }
 
+    private fun navigateToSummaryActivity() {
+        val intent = Intent(this, SummaryActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun saveItemListToSharedPreferences() {
         val sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         ProfileDetails.saveListToSharedPreferences(editor, profileDetailsList)
         editor.apply()
-        Log.d("DashboardActivity", "saveItemListToSharedPreferences called")
+        Log.d("MainActivity", "saveItemListToSharedPreferences called")
     }
 
     private fun showRemoveItemConfirmationDialog(position: Int) {
@@ -204,16 +212,5 @@ class DashboardActivity : AppCompatActivity() {
         showToast("Item removed successfully")
     }
 
-    private fun removeCheckedItems() {
-        val checkedItems = adapter.getCheckedItems()
-
-        if (checkedItems.isNotEmpty()) {
-            profileDetailsList.removeAll(checkedItems)
-            adapter.notifyDataSetChanged()
-            saveItemListToSharedPreferences()
-            showToast("Checked items removed successfully")
-        } else {
-            showToast("No checked items to remove")
-        }
-    }
 }
+

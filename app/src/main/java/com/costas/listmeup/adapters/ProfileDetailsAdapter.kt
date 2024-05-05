@@ -1,4 +1,4 @@
-package com.costas.listmeup
+package com.costas.listmeup.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.costas.listmeup.R
+import com.costas.listmeup.models.ProfileDetails
 
-
+@Suppress("DEPRECATION")
 class ProfileDetailsAdapter(private val profileDetailsList: List<ProfileDetails>) :
     RecyclerView.Adapter<ProfileDetailsAdapter.ViewHolder>() {
 
@@ -21,10 +23,6 @@ class ProfileDetailsAdapter(private val profileDetailsList: List<ProfileDetails>
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         this.onItemClickListener = listener
-    }
-
-    fun getCheckedItems(): List<ProfileDetails> {
-        return profileDetailsList.filter { it.acquired }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

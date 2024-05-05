@@ -1,4 +1,4 @@
-package com.costas.listmeup
+package com.costas.listmeup.models
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
