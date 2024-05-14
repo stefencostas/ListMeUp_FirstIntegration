@@ -42,6 +42,8 @@ android {
 
 dependencies {
 
+    implementation ("androidx.activity:activity-ktx:1.6.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation ("com.google.code.gson:gson:2.8.9")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("androidx.core:core-ktx:1.9.0")

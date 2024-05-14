@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F1EFE7"
+    tools:context=".MenuActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorF1EFE7"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="390dp"
+        android:layout_height="390dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
         android:gravity="center"
-        android:padding="32dp">
+        app:srcCompat="@drawable/logo" />
 
-        <ImageView
-            android:id="@+id/logoImageView"
-            android:layout_width="345dp"
-            android:layout_height="401dp"
-            android:src="@drawable/logo"
-            android:contentDescription="@string/todo" />
+    <Button
+        android:id="@+id/listNowButton"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginBottom="20dp"
+        android:text="Start Listing"
+        android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/listNowButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/logoImageView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:text="@string/list_now" />
+    <Button
+        android:id="@+id/profileButton"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listNowButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginBottom="20dp"
+        android:text="Profile"
+        android:textSize="25dp" />
 
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
+

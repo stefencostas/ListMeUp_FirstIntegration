@@ -28,8 +28,9 @@ class ProfileDetailsAdapter(private val profileDetailsList: List<ProfileDetails>
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemNameTextView: TextView = itemView.findViewById(R.id.itemNameTextView)
         val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
-        val acquiredCheckBox: CheckBox = itemView.findViewById(R.id.acquiredCheckBox)
         val quantityTextView: TextView = itemView.findViewById(R.id.quantityTextView)
+        val estimatedCostTextView: TextView = itemView.findViewById(R.id.estimatedCostTextView)
+        val acquiredCheckBox: CheckBox = itemView.findViewById(R.id.acquiredCheckBox)
 
         init {
             // Set click listener for the entire itemView
@@ -50,6 +51,7 @@ class ProfileDetailsAdapter(private val profileDetailsList: List<ProfileDetails>
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -74,10 +76,15 @@ class ProfileDetailsAdapter(private val profileDetailsList: List<ProfileDetails>
             R.string.quantity_label,
             profileDetails.quantity.toString()
         )
+        holder.estimatedCostTextView.text = holder.itemView.context.getString(
+            R.string.estimated_cost_label,
+            profileDetails.estimatedCost.toString()
+        )
 
         // Set the CheckBox state based on the acquired status
         holder.acquiredCheckBox.isChecked = profileDetails.acquired
     }
+
 
 
     override fun getItemCount(): Int {

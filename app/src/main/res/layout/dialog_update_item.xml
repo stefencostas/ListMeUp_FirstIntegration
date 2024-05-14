@@ -26,13 +26,24 @@
         android:minHeight="48dp"
         android:prompt="@string/select_category_prompt" />
 
-    <NumberPicker
-        android:id="@+id/numberPickerQuantity"
+    <EditText
+        android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/black"
+        android:autofillHints=""
+        android:hint="@string/quantity"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/etEstimatedCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/estimated_cost"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
         tools:ignore="VisualLintTextFieldSize" />
 
 </LinearLayout>

@@ -9,4 +9,17 @@
         <item>Office and School Supplies</item>
         <item>Others</item>
     </array>
+
+    <string-array name="category_filter">
+        <item>All</item>
+        <item>Food and Beverages</item>
+        <item>Household Items</item>
+        <item>Toiletries</item>
+        <item>Health and Wellness</item>
+        <item>Clothing and Accessories</item>
+        <item>Office and School Supplies</item>
+        <item>Others</item>
+    </string-array>
+
 </resources>
+

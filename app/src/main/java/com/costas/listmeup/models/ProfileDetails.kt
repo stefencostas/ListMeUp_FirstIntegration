@@ -8,8 +8,8 @@ data class ProfileDetails(
     var itemName: String,
     var category: String,
     var acquired: Boolean,
-    var quantity: Int
-
+    var quantity: Int,
+    var estimatedCost: Double
 ) {
     companion object {
         private const val LIST_KEY = "profileDetailsList"

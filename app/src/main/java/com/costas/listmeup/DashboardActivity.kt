@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.NumberPicker
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -16,19 +15,27 @@ import com.costas.listmeup.adapters.ProfileDetailsAdapter
 import com.costas.listmeup.models.ProfileDetails
 import com.costas.listmeup.databinding.ActivityDashboardBinding
 
+@Suppress("DEPRECATION")
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var profileDetailsList: MutableList<ProfileDetails>
     private lateinit var adapter: ProfileDetailsAdapter
 
+
     companion object {
         private const val SHARED_PREFERENCES_NAME = "Settings"
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val currentUsername = intent.getStringExtra("username")?: ""
+
+        binding.userNameTextView.text = getString(R.string.current_username, currentUsername)
+
         setupRecyclerView()
         setupListeners()
     }
@@ -77,6 +84,7 @@ class DashboardActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showAddItemDialog() {
         val dialogBuilder = AlertDialog.Builder(this)
         val inflater = layoutInflater
@@ -85,7 +93,8 @@ class DashboardActivity : AppCompatActivity() {
 
         val etName = dialogView.findViewById<EditText>(R.id.etName)
         val spinnerCategory = dialogView.findViewById<Spinner>(R.id.spinnerCategory)
-        val numberPickerQuantity = dialogView.findViewById<NumberPicker>(R.id.numberPickerQuantity)
+        val etQuantity = dialogView.findViewById<EditText>(R.id.etQuantity)
+        val etEstimatedCost = dialogView.findViewById<EditText>(R.id.etEstimatedCost)
 
         // Populate the Spinner with categories
         val categories = resources.getStringArray(R.array.categories)
@@ -93,22 +102,20 @@ class DashboardActivity : AppCompatActivity() {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategory.adapter = spinnerAdapter
 
-        // Set up the NumberPicker for quantity
-        numberPickerQuantity.minValue = 0
-        numberPickerQuantity.maxValue = 10 // Adjust the maximum value as needed
-
         dialogBuilder.setTitle("Add Item")
         dialogBuilder.setPositiveButton("Add") { _, _ ->
             val itemName = etName.text.toString().trim()
             val category = spinnerCategory.selectedItem.toString()
-            val quantity = numberPickerQuantity.value
+            val quantity = etQuantity.text.toString().toIntOrNull() ?: 1
+            val estimatedCost = etEstimatedCost.text.toString().toDoubleOrNull() ?: 0.00
 
-            if (itemName.isNotEmpty() && quantity > 0) {
+            if (itemName.isNotEmpty() && quantity > 0 && estimatedCost >= 0) {
                 val newItem = ProfileDetails(
                     itemName = itemName,
                     category = category,
                     acquired = false,
-                    quantity = quantity
+                    quantity = quantity,
+                    estimatedCost = estimatedCost,
                 )
                 profileDetailsList.add(0, newItem)
                 adapter.notifyItemInserted(0)
@@ -123,6 +130,9 @@ class DashboardActivity : AppCompatActivity() {
 
         val alertDialog = dialogBuilder.create()
         alertDialog.show()
+
+        // Set the default estimated cost
+        etEstimatedCost.setText("0.00")
     }
 
 
@@ -140,31 +150,33 @@ class DashboardActivity : AppCompatActivity() {
 
         val etName = dialogView.findViewById<EditText>(R.id.etName)
         val spinnerCategory = dialogView.findViewById<Spinner>(R.id.spinnerCategory)
-        val numberPickerQuantity = dialogView.findViewById<NumberPicker>(R.id.numberPickerQuantity)
+        val etQuantity = dialogView.findViewById<EditText>(R.id.etQuantity)
+        val etEstimatedCost = dialogView.findViewById<EditText>(R.id.etEstimatedCost)
 
-        etName.setText(currentProfileDetails.itemName)
-
+        // Populate the Spinner with categories
         val categories = resources.getStringArray(R.array.categories)
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategory.adapter = spinnerAdapter
 
-        val currentCategory = currentProfileDetails.category
-        val categoryIndex = categories.indexOf(currentCategory)
-        spinnerCategory.setSelection(categoryIndex)
-
-        numberPickerQuantity.minValue = 0
-        numberPickerQuantity.maxValue = 10 // Adjust the maximum value as needed
-        numberPickerQuantity.value = currentProfileDetails.quantity
-
         dialogBuilder.setTitle("Update Item")
         dialogBuilder.setPositiveButton("Update") { _, _ ->
-            currentProfileDetails.itemName = etName.text.toString()
-            currentProfileDetails.category = spinnerCategory.selectedItem.toString()
-            currentProfileDetails.quantity = numberPickerQuantity.value
-            saveItemListToSharedPreferences()
-            adapter.updateItem(position)
-            showToast("Item updated successfully")
+            val itemName = etName.text.toString().trim()
+            val category = spinnerCategory.selectedItem.toString()
+            val quantity = etQuantity.text.toString().toIntOrNull() ?: currentProfileDetails.quantity
+            val estimatedCost = etEstimatedCost.text.toString().toDoubleOrNull() ?: currentProfileDetails.estimatedCost
+
+            if (itemName.isNotEmpty() && quantity > 0 && estimatedCost >= 0) {
+                currentProfileDetails.itemName = itemName
+                currentProfileDetails.category = category
+                currentProfileDetails.quantity = quantity
+                currentProfileDetails.estimatedCost = estimatedCost
+                saveItemListToSharedPreferences()
+                adapter.updateItem(position)
+                showToast("Item updated successfully")
+            } else {
+                showToast("Please fill in all fields correctly")
+            }
         }
 
         dialogBuilder.setNeutralButton("Remove") { _, _ ->
@@ -178,6 +190,12 @@ class DashboardActivity : AppCompatActivity() {
 
         val alertDialog = dialogBuilder.create()
         alertDialog.show()
+
+        // Set the current values
+        etName.setText(currentProfileDetails.itemName)
+        spinnerCategory.setSelection(categories.indexOf(currentProfileDetails.category))
+        etQuantity.setText(currentProfileDetails.quantity.toString())
+        etEstimatedCost.setText(currentProfileDetails.estimatedCost.toString())
     }
 
     private fun navigateToSummaryActivity() {
@@ -210,6 +228,14 @@ class DashboardActivity : AppCompatActivity() {
         adapter.removeItem(position)
         saveItemListToSharedPreferences()
         showToast("Item removed successfully")
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

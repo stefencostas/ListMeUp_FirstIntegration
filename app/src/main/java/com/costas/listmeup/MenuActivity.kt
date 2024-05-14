@@ -12,13 +12,17 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         findViewById<Button>(R.id.listNowButton).setOnClickListener {
-            startDashboardActivity()
+            val intent = Intent(this, LoadingActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        findViewById<Button>(R.id.profileButton).setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
-    private fun startDashboardActivity() {
-        val intent = Intent(this, DashboardActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+
 }
