@@ -25,47 +25,37 @@ class SummaryAdapter(context: Context, items: List<ProfileDetails>) :
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
         val viewHolder: ViewHolder
-        val currentCategory = if (position > 0) getItem(position - 1)?.category else ""
-        val nextCategory = if (position < count - 1) getItem(position + 1)?.category else ""
 
-        if (currentCategory != nextCategory || position == 0) {
-            if (convertView == null || convertView.tag !is ViewHolder) {
-                viewHolder = ViewHolder()
-                val inflater = LayoutInflater.from(context)
-                convertView = inflater.inflate(R.layout.item_summary, parent, false)
-                viewHolder.categoryTextView = convertView.findViewById(R.id.categoryTextView)
-                viewHolder.itemNameTextView = convertView.findViewById(R.id.itemNameTextView)
-                viewHolder.quantityTextView = convertView.findViewById(R.id.quantityTextView)
-                viewHolder.totalCostTextView = convertView.findViewById(R.id.totalCostTextView)
-                convertView.tag = viewHolder
-            } else {
-                viewHolder = convertView.tag as ViewHolder
-            }
-
-            viewHolder.categoryTextView?.text = getItem(position)?.category
-            viewHolder.categoryTextView?.visibility = View.VISIBLE
+        if (convertView == null || convertView.tag !is ViewHolder) {
+            viewHolder = ViewHolder()
+            val inflater = LayoutInflater.from(context)
+            convertView = inflater.inflate(R.layout.item_summary, parent, false)
+            viewHolder.categoryTextView = convertView.findViewById(R.id.categoryTextView)
+            viewHolder.itemNameTextView = convertView.findViewById(R.id.itemNameTextView)
+            viewHolder.quantityTextView = convertView.findViewById(R.id.quantityTextView)
+            viewHolder.totalCostTextView = convertView.findViewById(R.id.totalCostTextView)
+            convertView.tag = viewHolder
         } else {
-            if (convertView == null) {
-                viewHolder = ViewHolder()
-                val inflater = LayoutInflater.from(context)
-                convertView = inflater.inflate(R.layout.item_summary, parent, false)
-                viewHolder.itemNameTextView = convertView.findViewById(R.id.itemNameTextView)
-                viewHolder.quantityTextView = convertView.findViewById(R.id.quantityTextView)
-                viewHolder.totalCostTextView = convertView.findViewById(R.id.totalCostTextView)
-                convertView.tag = viewHolder
-            } else {
-                viewHolder = convertView.tag as ViewHolder
-                viewHolder.categoryTextView?.visibility = View.GONE
-            }
+            viewHolder = convertView.tag as ViewHolder
         }
 
-        val item = getItem(position)
-        viewHolder.itemNameTextView?.text = item?.itemName
-        viewHolder.quantityTextView?.text = "Quantity: ${item?.quantity}"
+        val currentItem = getItem(position)
+        val previousItem = if (position > 0) getItem(position - 1) else null
+
+        // Show category if it's the first item or the category differs from the previous item
+        if (previousItem == null || currentItem?.category != previousItem.category) {
+            viewHolder.categoryTextView?.text = currentItem?.category
+            viewHolder.categoryTextView?.visibility = View.VISIBLE
+        } else {
+            viewHolder.categoryTextView?.visibility = View.GONE
+        }
+
+        viewHolder.itemNameTextView?.text = currentItem?.itemName
+        viewHolder.quantityTextView?.text = "Quantity: ${currentItem?.quantity}"
 
         // Calculate and set the total cost
-        val totalCost = if (item?.quantity != null) item.quantity * item.estimatedCost else 0.0
-        viewHolder.totalCostTextView?.text = "Total Cost: ₱${"%.2f".format(totalCost)}"
+        val totalCost = currentItem?.quantity?.times(currentItem.estimatedCost) ?: 0.0
+        viewHolder.totalCostTextView?.text = "Total Budget Cost: ₱${"%.2f".format(totalCost)}"
 
         return convertView!!
     }

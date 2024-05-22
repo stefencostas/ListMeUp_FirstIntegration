@@ -6,8 +6,8 @@
     <string name="category_label">%1\$s</string>
     <string name="acquired_label">Acquired: %1\$s</string>
     <string name="quantity_label">Quantity: %1\$s</string>
-    <string name="estimated_cost_label">Estimated Cost: ₱%1\$s</string>
-    <string name="total_cost_label">Total Estimated Cost: ₱%s</string>
+    <string name="estimated_cost_label">Estimated Budget: ₱%1\$s</string>
+    <string name="total_cost_label">Total Estimated Budget: ₱%s</string>
     <string name="acquired">Acquired</string>
     <string name="item_details">Item Details</string>
     <string name="category">Category</string>
@@ -23,4 +23,10 @@
     <string name="current_username">Welcome, %1$s!</string>
     <string name="estimated_cost">Estimated Cost</string>
     <string name="category_filter_prompt">Filter by category</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name1">Name</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="profile">Profile</string>
+    <string name="loading">Loading...</string>
 </resources>

@@ -1,0 +1,19 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background color for the card -->
+    <item android:drawable="@color/colorF1EFE7" />
+
+    <!-- Border -->
+    <item
+        android:left="-2dp"
+        android:right="-2dp"
+        android:top="-2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/colorPrimary" />
+        </shape>
+    </item>
+
+</layer-list>

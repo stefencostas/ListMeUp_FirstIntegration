@@ -13,4 +13,14 @@
     <color name="grey_200">#E0E0E0</color>
     <color name="grey_800">#424242</color>
     <color name="colorF1EFE7">#F1EFE7</color>
-    =</resources>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorSecondaryText">#8A000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryLight">#FFBB86FC</color>
+    <color name="colorPrimaryDark">#FF3700B3</color>
+</resources>

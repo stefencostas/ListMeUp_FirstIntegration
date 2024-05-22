@@ -5,45 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/dialog_background">
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_background"
         android:hint="@string/name"
         android:inputType="text"
         android:minHeight="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColorHint="@color/colorSecondaryText"
         tools:ignore="VisualLintTextFieldSize" />
 
     <Spinner
         android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/spinner_background"
         android:entries="@array/categories"
         android:minHeight="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:prompt="@string/select_category_prompt" />
 
     <EditText
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edit_text_background"
         android:hint="@string/quantity"
         android:inputType="number"
         android:minHeight="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColorHint="@color/colorSecondaryText"
         tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/etEstimatedCost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
+        android:background="@drawable/edit_text_background"
         android:hint="@string/estimated_cost"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColorHint="@color/colorSecondaryText"
         tools:ignore="VisualLintTextFieldSize" />
 
 </LinearLayout>

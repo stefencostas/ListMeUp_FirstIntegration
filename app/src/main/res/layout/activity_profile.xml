@@ -1,98 +1,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <ImageView
-        android:id="@+id/editprofileImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_launcher_background"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
-
-    <Button
-        android:id="@+id/changeImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editprofileImage"
-        android:text="Change Image"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/nameEditText"
+    <TextView
+        android:id="@+id/usernameTextView"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_below="@id/changeImageButton"
-        android:hint="Name"
-        android:inputType="text"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="21dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="157dp" />
+        android:layout_marginEnd="156dp"
+        android:hint="@string/name1"
+        android:textColor="@android:color/black" />
 
-    <EditText
-        android:id="@+id/ageEditText"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/nameEditText"
-        android:hint="Age"
-        android:inputType="number"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginTop="8dp"/>
 
-    <EditText
-        android:id="@+id/nationalityEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ageEditText"
-        android:hint="Nationality"
-        android:inputType="text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginTop="8dp"/>
-
-    <EditText
-        android:id="@+id/religionEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nationalityEditText"
-        android:hint="Religion"
-        android:inputType="text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginTop="8dp"/>
-
-    <Spinner
-        android:id="@+id/genderSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/religionEditText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginTop="8dp"/>
-
-    <Button
-        android:id="@+id/saveButton"
+    <TextView
+        android:id="@+id/categoryNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/genderSpinner"
-        android:text="Save"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="16dp" />
+
+
+    <ListView
+        android:id="@+id/summaryListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/categoryNameTextView"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="16dp" />
+
+    <TextView
+        android:id="@+id/totalCostSumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp" />
 
 </RelativeLayout>

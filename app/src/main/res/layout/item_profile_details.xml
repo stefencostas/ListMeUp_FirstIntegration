@@ -6,57 +6,57 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:padding="16dp"
-    android:foreground="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/colorF1EFE7"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_border">
 
         <TextView
             android:id="@+id/itemNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
             android:layout_marginStart="8dp"
-            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/black" />
+            tools:text="Item Name" />
 
         <TextView
             android:id="@+id/categoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/itemNameTextView"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
             android:layout_marginStart="8dp"
-            android:textSize="15sp"
-            android:textColor="@color/grey_800" />
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="16sp"
+            tools:text="Category: Category Name" />
 
         <TextView
             android:id="@+id/quantityTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/categoryTextView"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
             android:layout_marginStart="8dp"
-            android:textSize="15sp"
-            android:textColor="@color/grey_800" />
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="16sp"
+            tools:text="Quantity: 5" />
 
         <TextView
             android:id="@+id/estimatedCostTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/quantityTextView"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="4dp"
             android:layout_marginStart="8dp"
-            android:textSize="15sp"
-            android:textColor="@color/grey_800" />
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="16sp"
+            tools:text="Estimated Cost: $50" />
 
         <CheckBox
             android:id="@+id/acquiredCheckBox"
@@ -64,12 +64,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:textSize="15sp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/acquired"
-            android:textColor="@color/black"
-            tools:ignore="RelativeOverlap,SmallSp" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            tools:ignore="RelativeOverlap"
+            tools:text="Acquired" />
+
 
     </RelativeLayout>
 

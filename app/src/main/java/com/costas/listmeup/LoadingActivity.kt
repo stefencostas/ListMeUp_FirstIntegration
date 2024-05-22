@@ -2,40 +2,20 @@ package com.costas.listmeup
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.costas.listmeup.databinding.DialogLoadingBinding
+import com.costas.listmeup.databinding.ActivityLoadingBinding
 
 class LoadingActivity : AppCompatActivity() {
-    private lateinit var binding: DialogLoadingBinding
+    private lateinit var binding: ActivityLoadingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DialogLoadingBinding.inflate(layoutInflater)
+        binding = ActivityLoadingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showLoadingDialog()
-
-        Handler().postDelayed({
-            dismissLoadingDialog()
+        binding.root.postDelayed({
             startActivity(Intent(this, DashboardActivity::class.java))
             finish()
-        }, 1500)
-    }
-
-    private fun showLoadingDialog() {
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setView(R.layout.dialog_loading)
-        dialogBuilder.setCancelable(false)
-        val dialog = dialogBuilder.create()
-        dialog.show()
-    }
-
-    private fun dismissLoadingDialog() {
-        val dialog = supportFragmentManager.findFragmentByTag("loading_dialog")
-        if (dialog is AlertDialog) {
-            dialog.dismiss()
-        }
+        }, 1000)
     }
 }
