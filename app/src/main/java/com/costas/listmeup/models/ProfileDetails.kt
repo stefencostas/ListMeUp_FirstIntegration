@@ -1,32 +1,46 @@
 package com.costas.listmeup.models
 
-import android.content.SharedPreferences
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import android.os.Parcel
+import android.os.Parcelable
 
 data class ProfileDetails(
-    var itemName: String,
-    var category: String,
-    var acquired: Boolean,
-    var quantity: Int,
-    var estimatedCost: Double
-) {
-    companion object {
-        private const val LIST_KEY = "profileDetailsList"
+    var id: String = "",
+    var itemName: String = "",
+    var category: String = "",
+    var acquired: Boolean = false,
+    var quantity: Int = 0,
+    var estimatedCost: Double = 0.0
+) : Parcelable {
 
-        fun getListFromSharedPreferences(sharedPreferences: SharedPreferences): List<ProfileDetails> {
-            val json = sharedPreferences.getString(LIST_KEY, "")
-            return if (json.isNullOrEmpty()) {
-                emptyList()
-            } else {
-                Gson().fromJson(json, object : TypeToken<List<ProfileDetails>>() {}.type)
-            }
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readInt() == 1,
+        parcel.readInt(),
+        parcel.readDouble()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeString(itemName)
+        parcel.writeString(category)
+        parcel.writeInt(if (acquired) 1 else 0)
+        parcel.writeInt(quantity)
+        parcel.writeDouble(estimatedCost)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<ProfileDetails> {
+        override fun createFromParcel(parcel: Parcel): ProfileDetails {
+            return ProfileDetails(parcel)
         }
 
-        fun saveListToSharedPreferences(editor: SharedPreferences.Editor, itemList: MutableList<ProfileDetails>) {
-            val gson = Gson()
-            val json = gson.toJson(itemList)
-            editor.putString(LIST_KEY, json)
+        override fun newArray(size: Int): Array<ProfileDetails?> {
+            return arrayOfNulls(size)
         }
     }
 }

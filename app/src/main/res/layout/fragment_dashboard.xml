@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorF1EFE7">
-
+    android:background="@color/colorPrimaryInactive">
 
     <LinearLayout
         android:id="@+id/header"
@@ -15,7 +14,7 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/userNameTextView"
             android:layout_width="0dp"
             android:layout_marginStart="20dp"
@@ -24,13 +23,13 @@
             android:layout_weight="1"
             android:textSize="24sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/saveChangesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="@string/save_changes"
-            android:textColor="@color/white"
+            android:textColor="@color/colorTertiaryInactive"
             android:background="@drawable/save_button_background" />
 
 
@@ -63,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@color/colorAccent"
+        app:tint="@color/colorQuaternaryInactive"
         tools:ignore="ImageContrastCheck" />
 
 

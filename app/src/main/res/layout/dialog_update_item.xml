@@ -19,19 +19,21 @@
         android:minHeight="48dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:textColorHint="@color/colorSecondaryText"
-        tools:ignore="VisualLintTextFieldSize" />
+        android:textColorHint="@color/black"
+        tools:ignore="VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <Spinner
         android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/spinner_background"
+        android:background="@drawable/edit_text_background"
         android:entries="@array/categories"
         android:minHeight="48dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
+        android:textColorHint="@color/black"
         android:prompt="@string/select_category_prompt" />
 
     <EditText
@@ -45,8 +47,9 @@
         android:minHeight="48dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:textColorHint="@color/colorSecondaryText"
-        tools:ignore="VisualLintTextFieldSize" />
+        android:textColorHint="@color/black"
+        tools:ignore="VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/etEstimatedCost"
@@ -58,7 +61,8 @@
         android:minHeight="48dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:textColorHint="@color/colorSecondaryText"
-        tools:ignore="VisualLintTextFieldSize" />
+        android:textColorHint="@color/black"
+        tools:ignore="VisualLintTextFieldSize"
+        android:autofillHints="" />
 
 </LinearLayout>

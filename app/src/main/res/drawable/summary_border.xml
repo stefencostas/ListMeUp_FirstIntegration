@@ -1,7 +1,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Background color for the card -->
-    <item android:drawable="@color/colorF1EFE7" />
+    <item android:drawable="@color/colorPrimaryInactive" />
 
     <!-- Border -->
     <item
@@ -12,7 +12,7 @@
             <solid android:color="@android:color/transparent" />
             <stroke
                 android:width="2dp"
-                android:color="@color/colorPrimary" />
+                android:color="@color/colorQuaternaryInactive" />
         </shape>
     </item>
 

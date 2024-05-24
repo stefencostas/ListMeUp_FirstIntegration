@@ -3,12 +3,12 @@
     android:shape="rectangle">
 
     <!-- Background color for the card -->
-    <solid android:color="@color/colorF1EFE7" />
+    <solid android:color="@color/colorPrimaryInactive" />
 
     <!-- Border -->
     <stroke
         android:width="2dp"
-        android:color="@color/colorAccent" />
+        android:color="@color/colorQuaternaryInactive" />
 
     <!-- Corner radius for rounded corners -->
     <corners android:radius="8dp" />

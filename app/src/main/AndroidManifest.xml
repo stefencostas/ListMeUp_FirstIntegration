@@ -12,14 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListMeUp"
         tools:targetApi="31">
+
+        <meta-data android:name="com.google.firebase.database.DatabaseUrl" android:value="https://listmeup-android-default-rtdb.asia-southeast1.firebasedatabase.app" />
+
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ProfileFragment"
             android:exported="false" />
         <activity
             android:name=".LoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".SummaryActivity"
+            android:name=".SummaryFragment"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -39,9 +42,7 @@
         <activity
             android:name=".DashboardActivity"
             android:exported="false" />
-        <activity
-            android:name=".MenuActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>

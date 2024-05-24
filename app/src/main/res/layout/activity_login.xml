@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1EFE7"
+    android:background="@color/colorPrimaryInactive"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -27,6 +27,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/login_text_background"
+        android:textColorHint="@color/colorQuaternaryInactive"
         android:hint="Email"
         android:inputType="textPersonName"
         android:padding="20dp" />
@@ -40,11 +41,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/login_text_background"
+        android:textColorHint="@color/colorQuaternaryInactive"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="20dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirm_button"
         android:layout_width="325dp"
         android:layout_height="wrap_content"
@@ -54,8 +56,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="110dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/colorTertiaryInactive"
         android:background="@drawable/button_background"
-        android:text="LOGIN"
+        android:text="Login"
         android:textSize="25sp" />
 
 </RelativeLayout>

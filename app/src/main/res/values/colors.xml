@@ -23,4 +23,12 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimaryLight">#FFBB86FC</color>
     <color name="colorPrimaryDark">#FF3700B3</color>
+
+
+    <color name="colorPrimaryInactive">#F1EFE7</color>
+    <color name="colorSecondaryInactive">#E1B0AC</color>
+    <color name="colorTertiaryInactive">#F2D4D6</color>
+    <color name="colorQuaternaryInactive">#213F99</color>
+
+
 </resources>

@@ -5,14 +5,15 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:padding="16dp"
-    app:cardBackgroundColor="@color/colorF1EFE7">
+    android:background="@color/colorPrimaryInactive"
+    >
 
-    <LinearLayout
+
+<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/summary_border"
-        android:layout_marginStart="8dp">
+        android:background="@drawable/summary_border">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/categoryTextView"
@@ -20,12 +21,12 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/black" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorF1EFE7"
+            android:background="@color/colorPrimaryInactive"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"/>
 
@@ -34,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="@color/primary_text_color" />
+            android:textColor="@color/colorQuaternaryInactive" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/quantityTextView"

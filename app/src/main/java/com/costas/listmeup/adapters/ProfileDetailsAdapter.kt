@@ -96,7 +96,7 @@ class ProfileDetailsAdapter(private val profileDetailsList: List<ProfileDetails>
         notifyItemChanged(position)
     }
 
-    fun removeItem(position: Int) {
+    fun deleteItem(position: Int) {
         notifyItemRemoved(position)
     }
 }

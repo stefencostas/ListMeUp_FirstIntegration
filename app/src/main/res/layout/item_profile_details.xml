@@ -8,7 +8,7 @@
     android:padding="16dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    app:cardBackgroundColor="@color/colorF1EFE7"
+    android:background="@color/colorPrimaryInactive"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
@@ -16,18 +16,18 @@
         android:layout_height="wrap_content"
         android:background="@drawable/card_border">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/itemNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorQuaternaryInactive"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:text="Item Name" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/categoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textSize="16sp"
             tools:text="Category: Category Name" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quantityTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:textSize="16sp"
             tools:text="Quantity: 5" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/estimatedCostTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
             android:textSize="16sp"
             tools:text="Estimated Cost: $50" />
 
-        <CheckBox
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/acquiredCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/acquired"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorQuaternaryInactive"
             android:textSize="16sp"
             tools:ignore="RelativeOverlap"
             tools:text="Acquired" />

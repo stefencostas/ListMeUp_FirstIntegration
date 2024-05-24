@@ -29,4 +29,6 @@
     <string name="dashboard">Dashboard</string>
     <string name="profile">Profile</string>
     <string name="loading">Loading...</string>
+
+    <string name="database_url">https://listmeup-android.firebaseio.com</string>
 </resources>
