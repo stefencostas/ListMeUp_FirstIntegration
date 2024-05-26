@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.costas.listmeup.R
-import com.costas.listmeup.models.ProfileDetails
+import com.costas.listmeup.models.ShoppingItem
 
-@Suppress("NAME_SHADOWING")
-class SummaryAdapter(context: Context, items: List<ProfileDetails>) :
-    ArrayAdapter<ProfileDetails>(context, R.layout.item_summary, items) {
+class SummaryAdapter(context: Context, shoppingList: List<ShoppingItem>) :
+    ArrayAdapter<ShoppingItem>(context, R.layout.item_summary, shoppingList) {
 
     private class ViewHolder {
         var categoryTextView: TextView? = null

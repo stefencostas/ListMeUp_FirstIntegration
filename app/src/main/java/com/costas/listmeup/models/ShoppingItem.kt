@@ -3,8 +3,9 @@ package com.costas.listmeup.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class ProfileDetails(
+data class ShoppingItem(
     var id: String = "",
+    var userId: String = "",
     var itemName: String = "",
     var category: String = "",
     var acquired: Boolean = false,
@@ -12,17 +13,29 @@ data class ProfileDetails(
     var estimatedCost: Double = 0.0
 ) : Parcelable {
 
+    constructor(map: Map<String, Any>) : this(
+        map["id"] as String,
+        map["userId"] as String,
+        map["itemName"] as String,
+        map["category"] as String,
+        map["acquired"] as Boolean,
+        map["quantity"] as Int,
+        map["estimatedCost"] as Double
+    )
+
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readInt() == 1,
+        parcel.readString() ?: "",
+        parcel.readInt() != 0,
         parcel.readInt(),
         parcel.readDouble()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
+        parcel.writeString(userId)
         parcel.writeString(itemName)
         parcel.writeString(category)
         parcel.writeInt(if (acquired) 1 else 0)
@@ -34,12 +47,12 @@ data class ProfileDetails(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ProfileDetails> {
-        override fun createFromParcel(parcel: Parcel): ProfileDetails {
-            return ProfileDetails(parcel)
+    companion object CREATOR : Parcelable.Creator<ShoppingItem> {
+        override fun createFromParcel(parcel: Parcel): ShoppingItem {
+            return ShoppingItem(parcel)
         }
 
-        override fun newArray(size: Int): Array<ProfileDetails?> {
+        override fun newArray(size: Int): Array<ShoppingItem?> {
             return arrayOfNulls(size)
         }
     }

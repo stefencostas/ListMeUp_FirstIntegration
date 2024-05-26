@@ -11,7 +11,8 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.costas.listmeup.adapters.SummaryAdapter
 import com.costas.listmeup.databinding.FragmentSummaryBinding
-import com.costas.listmeup.models.ProfileDetails
+import com.costas.listmeup.models.ShoppingItem
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -25,7 +26,9 @@ class SummaryFragment : Fragment() {
     private var selectedCategory: String? = null
     private lateinit var summaryAdapter: SummaryAdapter
     private lateinit var myRef: DatabaseReference
-    private lateinit var profileDetailsList: MutableList<ProfileDetails>
+    private lateinit var shoppingItemList: MutableList<ShoppingItem>
+    private lateinit var auth: FirebaseAuth
+    private var userId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +40,21 @@ class SummaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val database = FirebaseDatabase.getInstance("https://listmeup-android-default-rtdb.asia-southeast1.firebasedatabase.app")
-        myRef = database.getReference("profile_details")
-        profileDetailsList = mutableListOf()
-        setupCategorySpinner()
-        loadProfileDetailsFromFirebase() // Load profile details from Firebase
-    }
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        userId = currentUser?.uid
 
+        if (userId != null) {
+            val database = FirebaseDatabase.getInstance("https://listmeup-android-default-rtdb.asia-southeast1.firebasedatabase.app")
+            myRef = database.getReference("profile_details/$userId/shopping_items")
+            shoppingItemList = mutableListOf()
+            setupCategorySpinner()
+            loadShoppingItemsFromFirebase() // Load shopping items from Firebase
+        } else {
+            // Handle the case where userId is null (e.g., user is not logged in)
+            Log.w("SummaryFragment", "User is not logged in")
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -72,8 +83,8 @@ class SummaryFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun updateSummaryList() {
         val binding = _binding ?: return // Ensures safety if _binding is null
-        if (::profileDetailsList.isInitialized) {
-            val acquiredItems = profileDetailsList.filter { it.acquired }
+        if (::shoppingItemList.isInitialized) {
+            val acquiredItems = shoppingItemList.filter { it.acquired }
             val filteredItems = when (selectedCategory) {
                 "All", null -> acquiredItems
                 else -> acquiredItems.filter { it.category == selectedCategory }
@@ -87,35 +98,26 @@ class SummaryFragment : Fragment() {
             summaryAdapter = SummaryAdapter(requireContext(), groupedItems.values.flatten())
             binding.summaryListView.adapter = summaryAdapter
 
-            binding.totalCostSumTextView.text = "Budget Cost Sum : ₱${"%.2f".format(sumBudgetCost)}"
-        } else {
-            Log.e("SummaryFragment", "profileDetailsList is not initialized")
-            // Handle the case where profileDetailsList is not initialized
+            binding.totalCostSumTextView.text = "Total budget cost: ₱$sumBudgetCost"
         }
     }
 
-
-    private fun loadProfileDetailsFromFirebase() {
-        val database = FirebaseDatabase.getInstance()
-        val profileDetailsRef = database.getReference("profile_details")
-
-        profileDetailsRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                profileDetailsList.clear() // Clear existing data
-                for (dataSnapshot in snapshot.children) {
-                    val profileDetails = dataSnapshot.getValue(ProfileDetails::class.java)
-                    if (profileDetails != null) {
-                        profileDetailsList.add(profileDetails)
+    private fun loadShoppingItemsFromFirebase() {
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                shoppingItemList.clear()
+                for (itemSnapshot in dataSnapshot.children) {
+                    val shoppingItem = itemSnapshot.getValue(ShoppingItem::class.java)
+                    if (shoppingItem != null) {
+                        shoppingItemList.add(shoppingItem)
                     }
                 }
                 updateSummaryList()
-                Log.d("SummaryFragment", "Data loaded successfully. Count: ${profileDetailsList.size}")
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("SummaryFragment", "Database error: ${error.message}")
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("SummaryFragment", "loadShoppingItemsFromFirebase:onCancelled", databaseError.toException())
             }
         })
     }
-
 }
