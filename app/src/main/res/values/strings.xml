@@ -28,7 +28,15 @@
     <string name="name1">Name</string>
     <string name="dashboard">Dashboard</string>
     <string name="profile">Profile</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
 
     <string name="database_url">https://listmeup-android.firebaseio.com</string>
+    <string name="logout">Logout</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="update_settings">Update Settings</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="add_items">+ Add Items</string>
 </resources>

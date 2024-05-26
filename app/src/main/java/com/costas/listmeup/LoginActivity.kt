@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.costas.listmeup.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,8 +47,14 @@ class LoginActivity : AppCompatActivity() {
                     }
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Authentication failed. ${task.exception?.localizedMessage}",
-                        Toast.LENGTH_SHORT).show()
+                    val errorMessage = task.exception?.localizedMessage ?: "Unknown error"
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                        // Incorrect password
+                        Toast.makeText(baseContext, "Authentication failed: Incorrect password", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Other authentication failures
+                        Toast.makeText(baseContext, "Authentication failed: $errorMessage", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
     }
