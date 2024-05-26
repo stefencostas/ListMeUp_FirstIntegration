@@ -1,0 +1,68 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuestDashboardActivity"
+    android:background="@color/colorPrimaryInactive">
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Dashboard Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/dashboardButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:text="@string/dashboard"
+            android:textColor="@color/colorTertiaryInactive"
+            android:textSize="12sp"
+            tools:ignore="ButtonStyle,VisualLintButtonSize" />
+
+
+        <!-- Profile Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/summaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:text="@string/summary"
+            android:textColor="@color/colorTertiaryInactive"
+            android:textSize="12sp"
+            tools:ignore="ButtonStyle,VisualLintButtonSize" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

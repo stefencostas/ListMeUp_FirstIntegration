@@ -25,7 +25,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
         binding.continueAsGuestTextview.setOnClickListener {
-            startActivity(Intent(this, LoadingActivity::class.java))
+            // Start LoadingActivity with an extra indicating guest mode
+            val intent = Intent(this, LoadingActivity::class.java)
+            intent.putExtra("guestMode", true)
+            startActivity(intent)
         }
     }
 }

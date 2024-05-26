@@ -57,7 +57,7 @@
             android:hint="@string/current_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColorHint="#black"
+            android:textColorHint="@color/black"
             tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
@@ -68,7 +68,7 @@
             android:hint="@string/new_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColorHint="#black"
+            android:textColorHint="@color/black"
             tools:ignore="HardcodedText,VisualLintTextFieldSize" />
 
         <EditText
@@ -79,7 +79,7 @@
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColorHint="#black"
+            android:textColorHint="@color/black"
             tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
@@ -90,7 +90,7 @@
             android:hint="@string/email_address"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:textColorHint="#black"
+            android:textColorHint="@color/black"
             tools:ignore="VisualLintTextFieldSize" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:text="@string/update_settings"
             android:background="@drawable/save_button_background"
-            android:textColor="@color/colorTertiaryInactive"
+            android:textColor="@color/colorQuaternaryInactive"
             android:layout_gravity="center"
             android:layout_marginTop="16dp" />
 
