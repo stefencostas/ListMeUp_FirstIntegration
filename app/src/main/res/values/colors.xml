@@ -25,10 +25,10 @@
     <color name="colorPrimaryDark">#FF3700B3</color>
 
 
-    <color name="colorPrimaryInactive">#F1EFE7</color>
-    <color name="colorSecondaryInactive">#E1B0AC</color>
-    <color name="colorTertiaryInactive">#F2D4D6</color>
-    <color name="colorQuaternaryInactive">#213F99</color>
+    <color name="colorPrimaryInactive">#E5E8EB</color>
+    <color name="colorSecondaryInactive">#8B95A2</color>
+    <color name="colorTertiaryInactive">#7FD1AE</color>
+    <color name="colorQuaternaryInactive">#00453A</color>
 
 
 </resources>

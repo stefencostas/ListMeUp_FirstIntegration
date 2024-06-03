@@ -5,7 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GuestDashboardActivity"
-    android:background="@color/colorPrimaryInactive">
+    android:background="@drawable/listmeupbackground">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/logo_description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/listmeuptextlogo"
+        app:layout_constraintBottom_toTopOf="@id/guidelinetop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.494"
+        app:layout_constraintWidth_default="spread" />
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -15,7 +38,8 @@
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/guidelinetop"
+        app:layout_constraintVertical_bias="0.454" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineBottom"

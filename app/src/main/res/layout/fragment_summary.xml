@@ -1,12 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/colorPrimaryInactive"
-    >
+    android:background="@android:color/transparent">
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/categorySpinner"
@@ -19,8 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="16dp"
-        android:background="@drawable/spinner_background"
-/>
+        android:background="@drawable/spinner_background" />
 
     <ListView
         android:id="@+id/summaryListView"
@@ -36,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/totalCostSumTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

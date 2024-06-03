@@ -69,8 +69,10 @@
             android:text="@string/acquired"
             android:textColor="@color/colorQuaternaryInactive"
             android:textSize="16sp"
+            app:buttonTint="@color/colorTertiaryInactive"
             tools:ignore="RelativeOverlap"
             tools:text="Acquired" />
+
 
 
     </RelativeLayout>

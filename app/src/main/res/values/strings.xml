@@ -39,4 +39,6 @@
     <string name="update_settings">Update Settings</string>
     <string name="account_settings">Account Settings</string>
     <string name="add_items">+ Add Items</string>
+    <string name="logo_description" />
+    <string name="logout_account">Logout Account</string>
 </resources>

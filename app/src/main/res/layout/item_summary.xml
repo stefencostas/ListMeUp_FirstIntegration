@@ -5,55 +5,63 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:padding="16dp"
-    android:background="@color/colorPrimaryInactive"
-    >
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:background="@color/colorPrimaryInactive">
 
-
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/summary_border">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/categoryTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorPrimaryInactive"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/itemNameTextView"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/colorQuaternaryInactive" />
+            android:orientation="vertical"
+            android:background="@drawable/card_border">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/quantityTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/secondary_text_color" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/categoryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/totalCostTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/secondary_text_color"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimaryInactive"
+                    android:layout_marginBottom="8dp"/>
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/itemNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorQuaternaryInactive"
+                    android:layout_marginBottom="4dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
 
-    </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/quantityTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/secondary_text_color"
+                    android:layout_marginBottom="4dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/totalCostTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/secondary_text_color"
+                    android:textStyle="bold"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+        </LinearLayout>
 
 </androidx.cardview.widget.CardView>

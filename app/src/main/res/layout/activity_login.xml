@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryInactive"
+    android:background="@drawable/listmeupbackground"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -17,7 +17,9 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/listmeuptextlogo"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <EditText
         android:id="@+id/email"
@@ -29,8 +31,10 @@
         android:background="@drawable/login_text_background"
         android:textColorHint="@color/colorQuaternaryInactive"
         android:hint="Email"
-        android:inputType="textPersonName"
-        android:padding="20dp" />
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
+        android:autofillHints=""
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/password"
@@ -44,7 +48,9 @@
         android:textColorHint="@color/colorQuaternaryInactive"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:autofillHints=""
+        tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirm_button"
@@ -59,6 +65,7 @@
         android:textColor="@color/colorTertiaryInactive"
         android:background="@drawable/button_background"
         android:text="Login"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

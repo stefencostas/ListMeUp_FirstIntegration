@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryInactive"
+    android:background="@drawable/listmeupbackground"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -13,7 +12,9 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/listmeuptextlogo"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
 
     <EditText
@@ -28,7 +29,9 @@
         android:hint="Username"
         android:textColorHint="@color/colorQuaternaryInactive"
         android:inputType="textPersonName"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:autofillHints=""
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/email"
@@ -42,7 +45,9 @@
         android:hint="Email"
         android:textColorHint="@color/colorQuaternaryInactive"
         android:inputType="textEmailAddress"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:autofillHints=""
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/password"
@@ -56,7 +61,9 @@
         android:hint="Password"
         android:textColorHint="@color/colorQuaternaryInactive"
         android:inputType="textPassword"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:autofillHints=""
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/confirmPassword"
@@ -70,7 +77,9 @@
         android:hint="Re-Password"
         android:textColorHint="@color/colorQuaternaryInactive"
         android:inputType="textPassword"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:autofillHints=""
+        tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirm_button"
@@ -85,6 +94,7 @@
         android:textColor="@color/colorTertiaryInactive"
         android:text="REGISTER"
         android:textSize="25sp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

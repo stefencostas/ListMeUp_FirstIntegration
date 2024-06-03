@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryInactive"
+    android:background="@drawable/listmeupbackground"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -17,7 +17,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/listmeuplogo" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signin_Button"
@@ -32,7 +32,8 @@
         android:layout_marginBottom="20dp"
         android:textColor="@color/colorTertiaryInactive"
         android:text="Sign In"
-        android:textSize="25dp" />
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signup_Button"
@@ -47,7 +48,8 @@
         android:layout_marginBottom="20dp"
         android:textColor="@color/colorTertiaryInactive"
         android:text="Sign Up"
-        android:textSize="25dp" />
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/continue_as_guest_textview"
@@ -57,9 +59,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="6dp"
         android:text="Continue as Guest"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textColor="@color/colorQuaternaryInactive"
-        android:clickable="true" />
+        android:clickable="true"
+        tools:ignore="HardcodedText"
+        android:focusable="true" />
 
 </RelativeLayout>
 
